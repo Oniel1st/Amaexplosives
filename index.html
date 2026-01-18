@@ -81,6 +81,8 @@
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             display: flex;
             flex-direction: column;
+            align-items: center; /* center content horizontally */
+            padding-top: 8px;    /* keep some spacing above image */
         }
 
         .gallery figure:hover {
@@ -88,11 +90,15 @@
             box-shadow: 0 14px 30px rgba(0,0,0,0.7);
         }
 
+        /* Reduced image size inside the figure container */
         .gallery img {
-            width: 100%;
-            height: 100%;
+            width: 90%;           /* don't fill the entire container horizontally */
+            height: auto;         /* keep natural aspect ratio */
+            max-height: 220px;    /* limit height so images are smaller */
             object-fit: cover;
             display: block;
+            margin: 0 auto;       /* center the image */
+            border-radius: 6px;   /* slight rounding to match container */
         }
 
         .gallery figcaption {
@@ -103,6 +109,8 @@
             font-weight: 700;
             letter-spacing: 1px;
             font-size: 0.95rem;
+            width: 100%;
+            margin-top: 8px; /* spacing between image and caption */
         }
 
         .gallery figcaption .role {
@@ -163,7 +171,8 @@
         /* Small screens adjustments */
         @media (max-width: 480px) {
             header h1 { font-size: 2rem; }
-            .gallery img { height: 160px; }
+            .gallery img { max-height: 140px; width: 92%; } /* smaller max height on small screens */
+            .gallery figure { padding-top: 6px; }
         }
     </style>
 </head>
