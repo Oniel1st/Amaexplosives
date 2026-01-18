@@ -69,25 +69,26 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
         }
-        img{
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-        }
-            
+        img {
+             height: 40px;
+             object-fit: contain;
+             }
 
         .gallery div {
-            background: #1a1a1a;
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: #ff7a00;
+                       background: #1a1a1a;
+                       height: 200px;
+                       display: flex;
+                       align-items: center;
+                       justify-content: center;
+                      font-weight: 700;
+                      letter-spacing: 2px;
+                      color: #ff7a00;
+                      transition: transform 0.2s;
         }
+        .gallery div:hover{
+            transform: scale(1.05);
+        }
+
 
         .events ul {
             list-style: none;
