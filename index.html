@@ -1,36 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notices</title>
+    <title>Image Upload</title>
 </head>
 <body>
-    <h1>Notices</h1>
-    <div id="notices">
-        <!-- Notices will be displayed here -->
-    </div>
-    <h2>Add New Notice</h2>
-    <form id="admin-form">
-        <label for="notice-title">Title:</label>
-        <input type="text" id="notice-title" name="title" required><br>
-
-        <label for="notice-content">Content:</label>
-        <textarea id="notice-content" name="content" required></textarea><br>
-
-        <input type="submit" value="Add Notice">
+    <h1>Upload Image</h1>
+    <form id="upload-form">
+        <input type="file" id="image-input" accept="image/*"/>
+        <button type="submit">Upload</button>
     </form>
-
+    <div id="image-display">
+        <h2>Uploaded Images</h2>
+        <div id="images-container"></div>
+    </div>
     <script>
-        document.getElementById('admin-form').onsubmit = function(event) {
+        document.getElementById('upload-form').addEventListener('submit', function(event) {
             event.preventDefault();
-            const title = document.getElementById('notice-title').value;
-            const content = document.getElementById('notice-content').value;
-            const noticeDiv = document.createElement('div');
-            noticeDiv.innerHTML = `<h3>${title}</h3><p>${content}</p>`;
-            document.getElementById('notices').appendChild(noticeDiv);
-            this.reset();
-        };
+            const fileInput = document.getElementById('image-input');
+            const file = fileInput.files[0];
+            if (file) {
+                const img = document.createElement('img');
+                img.src = URL.createObjectURL(file);
+                img.style.width = '100px';
+                img.style.height = '100px';
+                document.getElementById('images-container').appendChild(img);
+                // Optionally, display a notice about the uploaded image
+                const notice = document.createElement('p');
+                notice.innerText = 'Image uploaded: ' + file.name;
+                document.getElementById('images-container').appendChild(notice);
+            }
+        });
     </script>
 </body>
 </html>
